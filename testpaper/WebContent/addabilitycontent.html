@@ -9,35 +9,45 @@
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-	<div id="dd" class="easyui-dialog" title="My Dialog" style="width:400px;height:200px;padding:10px"
-			toolbar="#dlg-toolbar" buttons="#dlg-buttons">
-		Dialog Content.
-	</div>
-	<div id="dlg-toolbar">
-		<table cellpadding="0" cellspacing="0" style="width:100%">
+    
+   <body>
+	<h2>DataGrid with Toolbar</h2>
+	<p>Put buttons on top toolbar of DataGrid.</p>
+	<div style="margin:20px 0;"></div>
+	<table class="easyui-datagrid" title="DataGrid with Toolbar" style="width:700px;height:250px"
+			data-options="fit:true,rownumbers:true,singleSelect:true,url:'datagrid_data1.json',method:'get',toolbar:toolbar">
+		<thead>
 			<tr>
-				<td>
-					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">Edit</a>
-					<a href="#" class="easyui-linkbutton" iconCls="icon-help" plain="true">Help</a>
-				</td>
-				<td style="text-align:right">
-					<input></input><a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true"></a>
-				</td>
+				<th data-options="field:'itemid',width:80">Item ID</th>
+				<th data-options="field:'productid',width:100">Product</th>
+				<th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+				<th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+				<th data-options="field:'attr1',width:240">Attribute</th>
+				<th data-options="field:'status',width:60,align:'center'">Status</th>
 			</tr>
-		</table>
-	</div>
-	<div id="dlg-buttons">
-		<table cellpadding="0" cellspacing="0" style="width:100%">
-			<tr>
-				<td>
-					<img src="email.gif"/>
-				</td>
-				<td style="text-align:right">
-					<a href="#" class="easyui-linkbutton" iconCls="icon-save" onclick="javascript:alert('save')">Save</a>
-					<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dd').dialog('close')">Close</a>
-				</td>
-			</tr>
-		</table>
-	</div>
+		</thead>
+	</table>
+	<script type="text/javascript">
+		var toolbar = [{
+			text:'Add',
+			iconCls:'icon-add',
+			handler:function(){alert('add')}
+		},{
+			text:'Cut',
+			iconCls:'icon-cut',
+			handler:function(){alert('cut')}
+		},'-',{
+			text:'Save',
+			iconCls:'icon-save',
+			handler:function(){alert('save')}
+		}];
+	</script>
+</body>
+    
+    
+    
+    
+    
+    
 </body>
 </html>
