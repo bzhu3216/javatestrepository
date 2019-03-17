@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+	<meta charset="UTF-8">
+	<title>Toolbar and Buttons - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-
-	<div id="dlg" class="easyui-dialog" title="添加课程支撑点" style="width:400px;height:200px;padding:10px"
+	<h2>Toolbar and Buttons</h2>
+	<p>The toolbar and buttons can be added to dialog.</p>
+	<div style="margin:20px 0;">
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#dlg').dialog('open')">Open</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#dlg').dialog('close')">Close</a>
+	</div>
+	<div id="dlg" class="easyui-dialog" title="Toolbar and Buttons" style="width:400px;height:200px;padding:10px"
 			data-options="
-			    fit:true,
-				iconCls: 'icon-add',
+				iconCls: 'icon-save',
 				toolbar: [{
 					text:'Add',
 					iconCls:'icon-add',
@@ -42,10 +46,6 @@
 			">
 		The dialog content.
 	</div>
-
-
-
-
-
+	
 </body>
 </html>

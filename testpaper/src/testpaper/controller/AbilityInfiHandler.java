@@ -29,7 +29,20 @@ public class AbilityInfiHandler {
 	
 	/////////////////////////////////////////////////////
 	
+	@RequestMapping("/saveAbilityInfo")
+	@ResponseBody
+	public String addAbilitycontent(Abilitycontent ac){
 	
+			
+		int dOK = abilityInfoService.addAbilitItem(ac);
+		if(dOK > 0){
+			return "{\"success\":\"true\",\"message\":\"success!!!\"}";
+		}
+		 return "{\"success\":\"false\",\"message\":\"not succeed!\"}";
+	}
+
+	
+	/////////////////////////////////////////////////////////
 	
 	
 	

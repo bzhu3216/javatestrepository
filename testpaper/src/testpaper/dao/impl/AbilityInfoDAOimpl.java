@@ -27,7 +27,11 @@ public class AbilityInfoDAOimpl implements AbilityInfoDAO {
 		
 	}		
 ////////////////////////////////////////////////////////
-	
+	@Override
+	public int addAbilitItem(Abilitycontent ac) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Integer) session.save(ac);
+	}
 	
 ///////////////////////////////////////////////////
 	

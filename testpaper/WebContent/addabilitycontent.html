@@ -10,24 +10,105 @@
 </head>
 <body>
     
-   <body>
 	
 
-	<div style="margin:20px 0;"></div>
+	<div id="d1" style="margin:20px 0;"></div>
 	<table id="dg" class="easyui-datagrid" title="CheckBox Selection on DataGrid" style="width:100%;height:800px"
-			data-options="rownumbers:true,singleSelect:true,url:'ab/getAllabilityInfo',method:'get'">
+			data-options="rownumbers:true,nowrap:false,singleSelect:true,url:'ab/getAllabilityInfo',method:'get',toolbar:'#tb'">
 		<thead>
-			<tr>
-				<th data-options="field:'kk',checkbox:true"></th>
-				<th data-options="field:'id',width:80">Item ID</th>
-				<th data-options="field:'abilitystr',width:2000">Product</th>
+			<tr >
+				<th data-options="field:'kk',checkbox:true"></th>			
+				<th data-options="field:'abilitystr',width:2000">Conetnt</th>
 				
 			</tr>
 		</thead>
 	</table>
-		
+<!-- ----toolbar----- -->		
+<div id="tb" style="padding:5px;height:auto">
+		<div style="margin-bottom:5px">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="$('#dlg').dialog('open');"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+		</div>		
+	</div>
+  
 
-    
+  <!-- --------- -->
+<div id="dlg" class="easyui-dialog"  title="add course ability item"  style="width:550px;height:300px;padding:10px;"
+			data-options="
+			    closed:true,
+				buttons: [{
+					text:'Ok',
+					iconCls:'icon-ok',
+					handler:function(){
+						saveStaff();
+								
+					}
+				},{
+					text:'Cancel',
+					handler:function(){
+						$('#dlg').dialog('close');
+					}
+				}]
+			">
+			
+			<form id="ff" method="post" >
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>Item:</td>
+	    			<td><input class="easyui-textbox" name="abilitystr" id="sname" name="abilitystr" data-options="multiline:true" style="width:400px;height:180px"></input></td>
+	    		</tr>
+	    		
+	    	</table>
+	    </form>
+	
+			
+		
+	</div>
+<!-- --------- -->
+
+ 
+ <script type="text/javascript">
+<!--          --->
+	
+	
+function saveStaff() {
+	$("#ff").form("submit", {
+		url:'ab/saveAbilityInfo',
+		success : function(data) {	
+			eval('data='+data);
+			if (data.success == 'true') {
+				$('#ff').form('clear');
+			}			
+			$.messager.show({
+				title : "提示信息",
+				msg : data.message
+			});
+		}
+	});
+}
+
+
+
+
+
+ 
+<!---                  -->
+ 
+ 
+ 
+ 
+ 
+ 
+</script>
+ 
+ 
+ 
+ 
+ 
+ 
     
     
     

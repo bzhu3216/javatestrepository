@@ -8,6 +8,7 @@ public interface AbilityInfoService {
 	
        
 	   public List<Abilitycontent> getAllAbilitycontent();
+		public int addAbilitItem(Abilitycontent ac);
 		/*
 	   public Abilitycontent getAbilityInfoById(int id);
 		public int addAbility(Abilitycontent ac);

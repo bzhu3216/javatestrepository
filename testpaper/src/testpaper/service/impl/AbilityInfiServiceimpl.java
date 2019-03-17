@@ -2,6 +2,7 @@ package testpaper.service.impl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,10 @@ public class AbilityInfiServiceimpl implements AbilityInfoService {
 	
 ///////////////////////////////////////////////////
 	
-	
+	@Override
+	public int addAbilitItem(Abilitycontent ac) {
+		return abilityInfoDAO1.addAbilitItem(ac);
+	}
 	
 	
 	
