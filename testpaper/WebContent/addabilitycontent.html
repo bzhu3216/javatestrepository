@@ -13,11 +13,12 @@
 	
 
 	<div id="d1" style="margin:20px 0;"></div>
-	<table id="dg" class="easyui-datagrid" title="CheckBox Selection on DataGrid" style="width:100%;height:800px"
+	<table id="dg" class="easyui-datagrid" title="Course ability items" style="width:100%;height:800px"
 			data-options="rownumbers:true,nowrap:false,singleSelect:true,url:'ab/getAllabilityInfo',method:'get',toolbar:'#tb'">
 		<thead>
 			<tr >
-				<th data-options="field:'kk',checkbox:true"></th>			
+				<th data-options="field:'kk',checkbox:true"></th>
+				<th data-options="field:'id', hidden:true"></th>			
 				<th data-options="field:'abilitystr',width:2000">Conetnt</th>
 				
 			</tr>
@@ -30,7 +31,7 @@
 			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
 			<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
 			<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
-			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeablityitem();"></a>
 		</div>		
 	</div>
   
@@ -43,8 +44,9 @@
 					text:'Ok',
 					iconCls:'icon-ok',
 					handler:function(){
-						saveStaff();
-								
+						saveAblity();
+						$('#dlg').dialog('close');
+						location.reload() ;		
 					}
 				},{
 					text:'Cancel',
@@ -55,7 +57,7 @@
 			">
 			
 			<form id="ff" method="post" >
-	    	<table cellpadding="5">
+	    	<table >
 	    		<tr>
 	    			<td>Item:</td>
 	    			<td><input class="easyui-textbox" name="abilitystr" id="sname" name="abilitystr" data-options="multiline:true" style="width:400px;height:180px"></input></td>
@@ -71,10 +73,10 @@
 
  
  <script type="text/javascript">
-<!--          --->
+<!--   //////////////////////////       --->
 	
 	
-function saveStaff() {
+function saveAblity() {
 	$("#ff").form("submit", {
 		url:'ab/saveAbilityInfo',
 		success : function(data) {	
@@ -88,19 +90,38 @@ function saveStaff() {
 			});
 		}
 	});
+	
 }
+<!-------------->
+ 
+function removeablityitem() {
+	// 获取选中的ability记录行
+	var row = $('#dg').datagrid('getSelected');
+	var iid=row.id;
+if (row){	
+	$.messager.confirm('提示框', 'Delete？', function(r) {
+		if (r) {
+			$.get('ab//deleteAbilityInfo?id='+iid)
+			$.messager.show({
+					title : "提示信息",
+					msg : "ok"
+				});
+			location.reload() ;	
+		
+					
+			
+	}
+})
+
+}
+}
+///////////////////////////////////////////////
 
 
 
 
+//////////////////////////////////////////////
 
- 
-<!---                  -->
- 
- 
- 
- 
- 
  
 </script>
  

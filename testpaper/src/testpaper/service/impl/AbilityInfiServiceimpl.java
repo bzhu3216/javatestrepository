@@ -33,7 +33,14 @@ public class AbilityInfiServiceimpl implements AbilityInfoService {
 	}
 	
 	
-	
 	//////////////////////////////////////////////////
+	public int deleteAbilitItem(int id) {
+		
+		return abilityInfoDAO1.deleteAbilitItem(id);
+		
+		
+	}
+////////////////////////////////////////////////////////	
+	
 
 }

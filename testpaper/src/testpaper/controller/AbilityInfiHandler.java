@@ -22,7 +22,7 @@ public class AbilityInfiHandler {
 	@ResponseBody	
 	public List<Abilitycontent> getAbilitycontent() {
 		List<Abilitycontent> acs = abilityInfoService.getAllAbilitycontent();
-		System.out.println("ok........................");
+		
 	
 		return  acs;
 	}
@@ -41,9 +41,21 @@ public class AbilityInfiHandler {
 		 return "{\"success\":\"false\",\"message\":\"not succeed!\"}";
 	}
 
-	
 	/////////////////////////////////////////////////////////
+	@RequestMapping("/deleteAbilityInfo")
+	@ResponseBody
+	public String deleteAbilitycontent(int id){
+	
+		System.out.println("ok........................"+id);	
+		int dOK = abilityInfoService.deleteAbilitItem(id);
+		if(dOK > 0){
+			return "{\"success\":\"true\",\"message\":\"DEL success!!!\"}";
+		}
+		 return "{\"success\":\"false\",\"message\":\"not succeed!\"}";
+	}
 	
 	
+	
+/////////////////////////////////////////////////////////
 	
 }

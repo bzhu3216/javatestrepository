@@ -32,8 +32,34 @@ public class AbilityInfoDAOimpl implements AbilityInfoDAO {
 		Session session = sessionFactory.getCurrentSession();
 		return (Integer) session.save(ac);
 	}
-	
+//////////////////////////////////////////////////
+	@Override
+	public Abilitycontent getAbilityInfoById(int id) {
+		String hql = "from Abilitycontent ac where ac.id=" + id;
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hql);
+		return (Abilitycontent) query.uniqueResult();
+	}
 ///////////////////////////////////////////////////
+
+	public int deleteAbilitItem(int id)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			
+			Abilitycontent ac=getAbilityInfoById(id);
+			
+			session.delete(ac);
+		} catch (Exception e) {
+			return 0;
+		}
+		  return 1;
+		
+	}
+	
+	
+	
+	///////////////////////////////////////////////////
 	
 
 }
