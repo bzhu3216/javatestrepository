@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>jQuery EasyUI</title>
+<title>Add course ability</title>
 	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
@@ -11,39 +11,22 @@
 <body>
     
    <body>
-	<h2>DataGrid with Toolbar</h2>
-	<p>Put buttons on top toolbar of DataGrid.</p>
+	
+
 	<div style="margin:20px 0;"></div>
-	<table class="easyui-datagrid" title="DataGrid with Toolbar" style="width:700px;height:250px"
-			data-options="fit:true,rownumbers:true,singleSelect:true,url:'datagrid_data1.json',method:'get',toolbar:toolbar">
+	<table id="dg" class="easyui-datagrid" title="CheckBox Selection on DataGrid" style="width:100%;height:800px"
+			data-options="rownumbers:true,singleSelect:true,url:'ab/getAllabilityInfo',method:'get'">
 		<thead>
 			<tr>
-				<th data-options="field:'itemid',width:80">Item ID</th>
-				<th data-options="field:'productid',width:100">Product</th>
-				<th data-options="field:'listprice',width:80,align:'right'">List Price</th>
-				<th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
-				<th data-options="field:'attr1',width:240">Attribute</th>
-				<th data-options="field:'status',width:60,align:'center'">Status</th>
+				<th data-options="field:'kk',checkbox:true"></th>
+				<th data-options="field:'id',width:80">Item ID</th>
+				<th data-options="field:'abilitystr',width:2000">Product</th>
+				
 			</tr>
 		</thead>
 	</table>
-	<script type="text/javascript">
-		var toolbar = [{
-			text:'Add',
-			iconCls:'icon-add',
-			handler:function(){alert('add')}
-		},{
-			text:'Cut',
-			iconCls:'icon-cut',
-			handler:function(){alert('cut')}
-		},'-',{
-			text:'Save',
-			iconCls:'icon-save',
-			handler:function(){alert('save')}
-		}];
-	</script>
-</body>
-    
+		
+
     
     
     
