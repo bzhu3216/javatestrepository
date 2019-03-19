@@ -36,9 +36,9 @@ public class AbilityInfiHandler {
 			
 		int dOK = abilityInfoService.addAbilitItem(ac);
 		if(dOK > 0){
-			return "{\"success\":\"true\",\"message\":\"success!!!\"}";
+			return "s";
 		}
-		 return "{\"success\":\"false\",\"message\":\"not succeed!\"}";
+		 return "f";
 	}
 
 	/////////////////////////////////////////////////////////
@@ -46,16 +46,37 @@ public class AbilityInfiHandler {
 	@ResponseBody
 	public String deleteAbilitycontent(int id){
 	
-		System.out.println("ok........................"+id);	
+		//System.out.println("ok........................"+id);	
 		int dOK = abilityInfoService.deleteAbilitItem(id);
 		if(dOK > 0){
-			return "{\"success\":\"true\",\"message\":\"DEL success!!!\"}";
+			return "s";
 		}
-		 return "{\"success\":\"false\",\"message\":\"not succeed!\"}";
+		 return "f";
 	}
 	
-	
+
 	
 /////////////////////////////////////////////////////////
+	@RequestMapping("/updateAbilityInfo")
+	@ResponseBody
+	public String updateAbilitycontent(int id ,String abilitystr){
+	
+		Abilitycontent ac=abilityInfoService.getAbilityInfoById(id);
+		ac.setAbilitystr(abilitystr);		
+	   int dOK = abilityInfoService.updateAbilitItem(ac);
+		if(dOK > 0){
+			return "s";
+		}
+		 return "f";
+	
+	
+		
+	
+	}	
+	
+	
+	
+	
+	//////////////////////////////////////////////////////
 	
 }

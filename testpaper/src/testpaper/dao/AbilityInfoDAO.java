@@ -12,5 +12,6 @@ public interface AbilityInfoDAO {
 	public int addAbilitItem(Abilitycontent ac);
 	public int deleteAbilitItem(int id);
 	public Abilitycontent getAbilityInfoById(int id);
+	public int updateAbilitItem(Abilitycontent ac);
 	
 }

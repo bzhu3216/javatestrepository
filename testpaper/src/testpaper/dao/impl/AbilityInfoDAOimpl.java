@@ -41,7 +41,7 @@ public class AbilityInfoDAOimpl implements AbilityInfoDAO {
 		return (Abilitycontent) query.uniqueResult();
 	}
 ///////////////////////////////////////////////////
-
+	@Override
 	public int deleteAbilitItem(int id)
 	{
 		Session session = sessionFactory.getCurrentSession();
@@ -60,6 +60,18 @@ public class AbilityInfoDAOimpl implements AbilityInfoDAO {
 	
 	
 	///////////////////////////////////////////////////
+	@Override
+	public int updateAbilitItem(Abilitycontent ac) {	
+		
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			System.out.println(ac.getID()+"aaaa1111111111111111111111111111111"+ac.getAbilitystr());
+			session.update(ac);
+		} catch (Exception e) {
+			return 0;
+		}
+		return 1;		
+	}
 	
 
 }

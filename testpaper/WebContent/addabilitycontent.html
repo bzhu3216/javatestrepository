@@ -28,9 +28,9 @@
 <div id="tb" style="padding:5px;height:auto">
 		<div style="margin-bottom:5px">
 			<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="$('#dlg').dialog('open');"></a>
-			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
-			<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
-			<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"  onclick="updateAblity();"></a>
+			<!-- <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a> -->
+			<!--<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>-->
 			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeablityitem();"></a>
 		</div>		
 	</div>
@@ -45,13 +45,15 @@
 					iconCls:'icon-ok',
 					handler:function(){
 						saveAblity();
-						$('#dlg').dialog('close');
-						location.reload() ;		
+						$('#dlg').dialog('close');						
+							
 					}
 				},{
 					text:'Cancel',
 					handler:function(){
 						$('#dlg').dialog('close');
+						
+						
 					}
 				}]
 			">
@@ -60,7 +62,7 @@
 	    	<table >
 	    		<tr>
 	    			<td>Item:</td>
-	    			<td><input class="easyui-textbox" name="abilitystr" id="sname" name="abilitystr" data-options="multiline:true" style="width:400px;height:180px"></input></td>
+	    			<td><input class="easyui-textbox"  id="sname" name="abilitystr" data-options="multiline:true" style="width:400px;height:180px"></input></td>
 	    		</tr>
 	    		
 	    	</table>
@@ -71,6 +73,47 @@
 	</div>
 <!-- --------- -->
 
+<div id="dlg2" class="easyui-dialog"  title="add course ability item"  style="width:550px;height:320px;padding:10px;"
+			data-options="
+			    closed:true,
+				buttons: [{
+					text:'Modify',
+					iconCls:'icon-ok',
+					handler:function(){
+						updateAblityitem();
+						$('#dlg2').dialog('close');						
+							
+					}
+				},{
+					text:'Cancel',
+					handler:function(){
+						$('#dlg2').dialog('close');
+						
+						
+					}
+				}]
+			">
+			
+			<form id="ff2" method="post" >
+	    	<table >
+	    		<tr>
+	    			<td>Item:</td>	    			
+	    			<td><input class="easyui-textbox"  id="abilitystr" name="abilitystr" data-options="multiline:true" style="width:400px;height:180px"></input></td>
+	    		</tr>
+	    		
+	    	</table>
+	    	<div style="visibility: hidden;">
+	    	 <input class="easyui-textbox"  id="id" name="id" ></input>
+	    	 </div> 
+	    </form>
+	
+			
+		
+	</div>
+
+
+<!-- --------------------- -->
+
  
  <script type="text/javascript">
 <!--   //////////////////////////       --->
@@ -79,20 +122,41 @@
 function saveAblity() {
 	$("#ff").form("submit", {
 		url:'ab/saveAbilityInfo',
-		success : function(data) {	
-			eval('data='+data);
-			if (data.success == 'true') {
+		  function(data) {	
+			data=JSON.parse(data);
+			if (data == 's') {
 				$('#ff').form('clear');
-			}			
-			$.messager.show({
-				title : "提示信息",
-				msg : data.message
-			});
+				}
+		}
+	});
+	location.reload() ;	
+}
+<!-------------->
+
+
+
+///////////////////////////
+
+//////////////////////////////////////////////
+function updateAblityitem() {
+	$("#ff2").form("submit", {
+		url:'ab/updateAbilityInfo',
+		  function(data1) {	
+			Data1=JSON.parse(data1);
+			if (data1 == 's') {
+				$('#ff2').form('clear');
+				}
 		}
 	});
 	
+	location.reload() ;	
 }
-<!-------------->
+
+
+
+
+///////////////////////////////////////////
+///////////////////////////
  
 function removeablityitem() {
 	// 获取选中的ability记录行
@@ -102,10 +166,6 @@ if (row){
 	$.messager.confirm('提示框', 'Delete？', function(r) {
 		if (r) {
 			$.get('ab//deleteAbilityInfo?id='+iid)
-			$.messager.show({
-					title : "提示信息",
-					msg : "ok"
-				});
 			location.reload() ;	
 		
 					
@@ -117,10 +177,27 @@ if (row){
 }
 ///////////////////////////////////////////////
 
+function updateAblity() {
+
+	var iid;
+	var item;
+	var row = $('#dg').datagrid('getSelected');
+
+	if (row!=null){
+	  iid=row.id;
+	  item=row.abilitystr;
+	$("#id").textbox('setValue',iid);
+	$("#abilitystr").textbox('setValue',item); 	
+	$('#dlg2').dialog('open');	
+	}
+	else
+	alert('please select');
+	
+	
+	
+}
 
 
-
-//////////////////////////////////////////////
 
  
 </script>
