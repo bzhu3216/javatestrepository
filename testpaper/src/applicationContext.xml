@@ -39,6 +39,7 @@
 		<property name="annotatedClasses">
 			<list>				
 				<value>testpaper.entity.Abilitycontent</value>
+				<value>testpaper.entity.ChoiceQuestion</value>
 			
 			</list>
 		</property>
