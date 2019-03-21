@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+	<script type="text/javascript" src="easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+	      
+	
+</head>
+<body>
+
+<h2>Client Side Pagination in DataGrid</h2>
+	<p>This sample shows how to implement client side pagination in DataGrid.</p>
+	<div id='g' style="margin:20px 0;"> </div>  
+	
+<table id="dg" class="easyui-datagrid" title="Unit Learning Outcomes" style="width:100%;height:800px"
+			data-options="rownumbers:true,nowrap:false,singleSelect:true,url:'cq/getAllchoicequestion',method:'get',toolbar:'#tb'">
+		<thead>
+			<tr>
+			   <th data-options="field:'kk',checkbox:true"></th>
+				<th data-options="field:'id' ,width:80">id</th>
+				<th  data-options="field:'question', width:1000">Question</th>
+				<th  data-options="field:'comeout', width:80">OutComeid</th>
+				<th  data-options="field:'chapter' ,width:80">Section</th>	
+				
+			</tr>
+		</thead>
+	</table>
+
+
+    
+	
+	<div id="tb" style="padding:5px;height:auto">
+		<div style="margin-bottom:5px">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
+		</div>
+		<div>
+			Date From: <input class="easyui-datebox" style="width:80px">
+			To: <input class="easyui-datebox" style="width:80px">
+			Language: 
+			<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+				<option value="java">Java</option>
+				<option value="c">C</option>
+				<option value="basic">Basic</option>
+				<option value="perl">Perl</option>
+				<option value="python">Python</option>
+			</select>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+/////////////////////////////////////
+
+
+//////////////////////////////////////////
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
