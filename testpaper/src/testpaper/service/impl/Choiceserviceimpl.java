@@ -23,5 +23,21 @@ public class Choiceserviceimpl implements ChoiceService {
 		return choicequestiondao1.getAllChoiceQuestion();	
 	
 	}
+	@Override	
+	public List<ChoiceQuestion> getAllChoiceQuestionByPage(int pageIndex, int pageSize,
+			ChoiceQuestion oi){
+	
+		return choicequestiondao1.getAllChoiceQuestionByPage(pageIndex, pageSize, oi);
+		
+		
+	}
+///////////////////////////////
+	public int getTotalCount(ChoiceQuestion oi) {
+		return choicequestiondao1.getTotalCount(oi);
+		
+		
+	}
+	
+	
 
 }

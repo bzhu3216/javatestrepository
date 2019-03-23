@@ -4,12 +4,17 @@ package testpaper.dao;
 import java.util.List;
 
 
+
 import testpaper.entity.ChoiceQuestion;
 
 public interface ChoiceQuestionDAO {
 
 	
 	public List<ChoiceQuestion> getAllChoiceQuestion();
+	public List<ChoiceQuestion> getAllChoiceQuestionByPage(int pageIndex, int pageSize,
+			ChoiceQuestion oi);
+	public int getTotalCount(ChoiceQuestion oi);
+	
 //	public int addChoiceQuestion(ChoiceQuestion ac);
 	//public int deleteChoiceQuestion(int id);
 	//public int updateChoiceQuestion(ChoiceQuestion ac);
