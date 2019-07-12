@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-
 import testpaper.entity.ChoiceQuestion;
 import testpaper.service.ChoiceService;;
 @RequestMapping("/cq")
@@ -54,14 +53,34 @@ public class ChoiceQuestionHandler {
 		// 通过@ResponseBody注解自动将Map<String, Object>类型result转换为JSON格式,并向前端页面发送
 		return result;
 	
-	
-	
-	
-	
 	}
 	
 	
 	////////////////////////////////////////////////////
+
+	@RequestMapping("/savechoiceInfo")
+	@ResponseBody
+	public String addAbilitycontent(ChoiceQuestion cq){
+	
+			
+		//int dOK = abilityInfoService.addAbilitItem(ac);
+	//	if(dOK > 0){
+	//		return "s";
+		//}
+	//	 return "f";
+		//System.out.println(comeout);
+		
+		//System.out.println(cq.toString());
+		System.out.println(cq.getAnswer1());
+	
+	return "s";
+	
+	}
+
+	
+	
+	
+	//////////////////////////////////////////
 	
 	
 	

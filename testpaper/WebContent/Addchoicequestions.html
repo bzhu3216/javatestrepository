@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+	<script type="text/javascript" src="easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+
+<h2>Basic Form</h2>	
+	<div style="margin:20px 0;"></div>
+	<div class="easyui-panel" title="New Topic" style="width:100%">
+		<div style="width:100%">
+	    <form id="ff" method="post">
+	    	<table  style="width:100%; height: 350px; ">
+	    		<tr>
+	    			<td>Question:</td>
+	    			<td colspan="3"><input class="easyui-textbox" name="question" data-options="required:true,multiline:true" style="width:100%;height:80px"></input></td>
+	    		    </tr>
+	    		<tr>
+	    			<td>Choice A:</td>
+	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer1" data-options="required:true," style="width:100%"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>Choice B:</td>
+	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer2" data-options="required:true," style="width:100%"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>Choice C:</td>
+	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer3" data-options="required:true," style="width:100%"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>Choice D:</td>
+	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer4" data-options="required:true," style="width:100%"></input></td>
+	    		</tr>
+	    		<tr>
+	    			
+	    			<td style="width:10%">Outcome:</td>	    			
+	    				<td style="width:40%">
+	    				<input class="easyui-textbox" id="comeout2" name="comeout2" style="width:100%" ></input>
+	    				</td>
+	    				<td style="width:10%">Key:</td>
+	    			<td style="width:40%"><input class="easyui-textbox" name="key"  style="width:100%"></input>
+	    			</td>	    			    			    		     
+	    		
+	    		</tr>
+	    		<tr>
+	    			<td  style="width:10%">Picture:</td>	    			
+	    				<td style="width:40%">
+	    				<input class="easyui-numberbox" name="picid" style="width:100%"  data-options="min:1,precision:0"></input>
+	    				</td>
+	    		
+	    		     <td  style="width:10%">Chapter:</td>	    			
+	    				<td style="width:40%">
+	    				<input class="easyui-numberbox" name="chapter" style="width:100%"  data-options="min:1,precision:0"></input>
+	    				</td>
+	    		
+	    		</tr>
+	    	</table>
+	    		<div style="visibility: hidden;">
+	    	 <input class="easyui-textbox"  id="comeout" name="comeout" ></input>
+	    	 </div> 
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Submit</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">Clear</a>
+	    </div>
+	    </div>
+	</div>
+	
+	<!--///////////////////////////////	 -->
+	<div id="d1"  class="easyui-dialog"  style="margin:20px 0"
+	data-options="
+			    closed:true,
+			     modal: true,
+			     buttons: [{
+					text:'Ok',
+					iconCls:'icon-ok',
+					handler:function(){
+					getoutcomestr();						
+							
+					}
+				},{
+					text:'Cancel',
+					handler:function(){
+						$('#d1').dialog('close');
+						
+						
+					}
+				}]
+			     	
+	">
+	<table id="dg" class="easyui-datagrid" title="Unit Learning Outcomes" style="width:1000,height:800px"
+			data-options="rownumbers:true,nowrap:false,singleSelect:true,
+			url:'ab/getAllabilityInfo',
+			method:'get'
+			">
+		<thead>
+			<tr >
+				
+				<th data-options="field:'kk',checkbox:true"></th>
+				<th data-options="field:'id', hidden:false">id</th>			
+				<th data-options="field:'abilitystr',width:2000">Descriptions</th>
+				
+			</tr>
+		</thead>
+	</table>
+
+	
+</div>
+	
+	
+	<!--///////////////////////////////	 -->
+	
+	
+	<script>
+	//////////////////////////////////////////////////////
+		function submitForm(){
+			//$('#ff').form('submit');
+			//alert("ok");
+			$("#ff").form("submit", {
+				url:'cq/savechoiceInfo',
+				  function(data) {	
+					data=JSON.parse(data);
+					if (data == 's') {
+						$('#ff').form('clear');
+						}
+				}
+			});
+			
+		}
+		function clearForm(){
+			$('#ff').form('clear');
+		}
+	///////////////////////////////////////////////////////
+		
+	//////////////////////////////////////////////////////
+
+	$(function(){
+		var comeout=0;
+	    $("input",$("#comeout2").next("span")).click(function(){
+	       //
+	       // alert(comeoutid2);
+	           
+	       
+	      $('#d1').dialog('open');
+	       $('#d1').window('center');
+	       
+	       
+	       /////////////////
+	    })});
+	
+	/////////////////////////////////////////////////////////////////////////////////////////	
+		
+	function getoutcomestr(){
+			var row = $('#dg').datagrid('getSelected');
+	        if (row!=null){
+	        iid=row.id;
+	        item=row.abilitystr;
+	        comeout=iid;
+	        $("#comeout2").textbox('setValue',item);
+	        $("#comeout").textbox('setValue',comeout);
+	        $('#d1').dialog('close');
+	      //  alert(comeoutid2);
+	        
+		}
+	        }
+
+	
+	/////////////////
+		
+		
+		
+		
+	</script>
+
+
+
+
+</body>
+</html>

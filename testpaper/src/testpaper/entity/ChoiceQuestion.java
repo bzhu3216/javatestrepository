@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import javax.persistence.Transient; 
 @Entity
 @Table(name = "choice", catalog = "testpaper")
 public class ChoiceQuestion {
@@ -16,10 +18,11 @@ public class ChoiceQuestion {
 	private String answer2;
 	private String answer3;
 	private String answer4;
-	private int comeout;
-	private int picid;
-	private int chapter;
-	private int key;
+	private Integer comeout;
+	private Integer picid;
+	private Integer chapter;
+	private Integer key;
+	private String comeout2;
 	
 
 	@Id
@@ -92,49 +95,61 @@ public class ChoiceQuestion {
 	
 	
 	@Column(name = "comeout")
-	public int getComeout()
+	public Integer getComeout()
 	{
 		return comeout;
 	}
 	
-	public void setComeout(int comeout)
+	public void setComeout(Integer comeout)
 	{
 		this.comeout=comeout;
 	}	
 	
 	
 	@Column(name = "picid")
-	public int getPicid()
+	public Integer getPicid()
 	{
 		return picid;
 	}
 	
-	public void setPicid(int picid)
+	public void setPicid(Integer picid)
 	{
 		this.picid=picid;
 	}	
 	
 	@Column(name = "chapter")
-	public int getChapter()
+	public Integer getChapter()
 	{
 		return chapter;
 	}
 	
-	public void setChapter(int chapter)
+	public void setChapter(Integer chapter)
 	{
 		this.chapter=chapter;
 	}	
 	
 	@Column(name = "key")
-	public int getKey()
+	public Integer getKey()
 	{
 		return key;
 	}
 	
-	public void setKey(int key)
+	public void setKey(Integer key)
 	{
 		this.key=key;
 	}	
+///////////////////////////////////////	
+	
+	   @Transient  
+    public String getComeout2() {  
+        return comeout2;  
+    }  
+ 
+    public void setComeout2(String comeout2) {  
+        this.comeout2=comeout2; 
+    }
+	
+	
 	/** 无参构造方法 */
 	public ChoiceQuestion() {
 	}
