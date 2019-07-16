@@ -1,11 +1,14 @@
 package testpaper.dao.impl;
+import testpaper.entity.Picdata;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import testpaper.dao.PicDao;
+import testpaper.entity.Abilitycontent;
 import testpaper.entity.Pic;
 @Repository
 public class PicDaoimpl implements PicDao {
@@ -13,7 +16,7 @@ public class PicDaoimpl implements PicDao {
 	SessionFactory sessionFactory;
 	
 	@Override
-	public int addPic(Pic ac) {
+	public int addPic(Picdata ac) {
 		// TODO Auto-generated method stub
 		
 		Session session = sessionFactory.getCurrentSession();
@@ -27,10 +30,16 @@ public class PicDaoimpl implements PicDao {
 	}
 
 	@Override
-	public Pic getPicById(int id) {
+	public Picdata getPicById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		//String hql = "from Picdata ac where ac.id=" + id;
+		String hql = "from Picdata ac where ac.id=2";
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hql);
+		return (Picdata) query.uniqueResult();
+		//return (Picdata) query.getFirstResult();
 	}
+	
 
 	@Override
 	public int updatePicItem(Pic ac) {

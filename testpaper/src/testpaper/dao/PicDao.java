@@ -3,13 +3,14 @@ package testpaper.dao;
 
 
 import testpaper.entity.Pic;
+import testpaper.entity.Picdata;
 
 public interface PicDao {
 	
 	
-	public int addPic(Pic ac);
+	public int addPic(Picdata ac);
 	public int deletePic(int id);
-	public Pic getPicById(int id);
+	public Picdata getPicById(int id);
 	public int updatePicItem(Pic ac);
 	
 	

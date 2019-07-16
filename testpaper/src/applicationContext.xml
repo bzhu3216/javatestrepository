@@ -35,12 +35,19 @@
 				<prop key="hibernate.show_sql">false</prop>
 			</props>
 		</property>
+		<property name="mappingResources"> 
+		<list>
+		 <value>testpaper/entity/Picdata.hbm.xml</value> 
+		</list> 
+		</property> 
+		
 		<!-- 配置 Hibernate基于注解的实体类的位置及名称 -->
 		<property name="annotatedClasses">
 			<list>				
 				<value>testpaper.entity.Abilitycontent</value>
 				<value>testpaper.entity.ChoiceQuestion</value>
 			    <value>testpaper.entity.Pic</value>
+			      
 			</list>
 		</property>
 	</bean>
@@ -52,7 +59,7 @@
 	</bean>
 	 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-     <property name="maxUploadSize" value="104857600" />
+     <property name="maxUploadSize" value="6024000" />
      <property name="maxInMemorySize" value="4096" />
      <property name="defaultEncoding" value="UTF-8"></property>
 </bean>

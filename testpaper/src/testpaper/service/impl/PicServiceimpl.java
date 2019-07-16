@@ -1,5 +1,5 @@
 package testpaper.service.impl;
-
+import testpaper.entity.Picdata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +13,9 @@ import testpaper.dao.*;
 public class PicServiceimpl implements PicService {
 	@Autowired
 	PicDao PicDAO1;
+	
 	@Override
-	public int addPic(Pic ac) {
+	public int addPic(Picdata ac) {
 		// TODO Auto-generated method stub
 		return PicDAO1.addPic(ac);
 	}
@@ -26,9 +27,9 @@ public class PicServiceimpl implements PicService {
 	}
 
 	@Override
-	public Pic getPicById(int id) {
+	public Picdata getPicById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return PicDAO1.getPicById(id);
 	}
 
 	@Override

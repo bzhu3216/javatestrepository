@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2019-7-15 19:05:22 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="testpaper.entity.Picdata" table="picdata" catalog="testpaper">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="pic" type="binary">
+            <column name="pic" />
+        </property>
+        <property name="type" type="int">
+            <column name="type" />
+        </property>
+        <property name="questionid" type="int">
+            <column name="questionid" />
+        </property>
+    </class>
+</hibernate-mapping>
