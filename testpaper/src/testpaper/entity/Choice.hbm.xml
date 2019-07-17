@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2019-7-17 15:23:24 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="testpaper.entity.Choice" table="choice" catalog="testpaper">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="question" type="string">
+            <column name="question" length="65535" not-null="true" />
+        </property>
+        <property name="answer1" type="string">
+            <column name="answer1" length="200" not-null="true" />
+        </property>
+        <property name="answer2" type="string">
+            <column name="answer2" length="200" not-null="true" />
+        </property>
+        <property name="answer3" type="string">
+            <column name="answer3" length="200" not-null="true" />
+        </property>
+        <property name="answer4" type="string">
+            <column name="answer4" length="200" not-null="true" />
+        </property>
+        <property name="keyy" type="java.lang.Character">
+            <column name="keyy" length="1" />
+        </property>
+        <property name="picid" type="java.lang.Integer">
+            <column name="picid" />
+        </property>
+        <property name="comeout" type="java.lang.Integer">
+            <column name="comeout" />
+        </property>
+        <property name="chapter" type="java.lang.Integer">
+            <column name="chapter" />
+        </property>
+    </class>
+</hibernate-mapping>

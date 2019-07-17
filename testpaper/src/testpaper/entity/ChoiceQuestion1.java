@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient; 
 @Entity
 @Table(name = "choice", catalog = "testpaper")
-public class ChoiceQuestion {
+public class ChoiceQuestion1 {
 	
 	private int id;
 	private String question;
@@ -18,10 +18,10 @@ public class ChoiceQuestion {
 	private String answer2;
 	private String answer3;
 	private String answer4;
-	private Integer comeout;
-	private Integer picid;
-	private Integer chapter;
-	private Integer key;
+	private int comeout;
+	private int picid;
+	private int chapter;
+	private int key;
 	private String comeout2;
 	
 
@@ -92,55 +92,54 @@ public class ChoiceQuestion {
 		this.answer4=answer4;
 	}	
 	
-	
-	
+		
 	@Column(name = "comeout")
-	public Integer getComeout()
+	public int getComeout()
 	{
 		return comeout;
 	}
 	
-	public void setComeout(Integer comeout)
+	public void setComeout(int comeout)
 	{
 		this.comeout=comeout;
 	}	
 	
 	
 	@Column(name = "picid")
-	public Integer getPicid()
+	public int getPicid()
 	{
 		return picid;
 	}
 	
-	public void setPicid(Integer picid)
+	public void setPicid(int picid)
 	{
 		this.picid=picid;
 	}	
 	
 	@Column(name = "chapter")
-	public Integer getChapter()
+	public int getChapter()
 	{
 		return chapter;
 	}
 	
-	public void setChapter(Integer chapter)
+	public void setChapter(int chapter)
 	{
 		this.chapter=chapter;
 	}	
 	
 	@Column(name = "key")
-	public Integer getKey()
+	public int getKey()
 	{
 		return key;
 	}
 	
-	public void setKey(Integer key)
+	public void setKey(int key)
 	{
 		this.key=key;
 	}	
 ///////////////////////////////////////	
 	
-	   @Transient  
+	 @Transient  
     public String getComeout2() {  
         return comeout2;  
     }  
@@ -151,7 +150,7 @@ public class ChoiceQuestion {
 	
 	
 	/** 无参构造方法 */
-	public ChoiceQuestion() {
+	public ChoiceQuestion1() {
 	}
 	
 	

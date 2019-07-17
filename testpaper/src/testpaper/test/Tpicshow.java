@@ -69,13 +69,13 @@ public class Tpicshow {
 	@Test
 	public void testHql_1() {
 		// 编写HQL语句
-		//String hql = "from Picdata ac where ac.id=1";
+		String hql = "from Picdata ac where ac.id=1";
 		// 创建Query对象
-		//Query query = session.createQuery(hql);
+		Query query = session.createQuery(hql);
 		// 执行查询，获得结果
-		//Picdata aa=(Picdata) query.uniqueResult();
-		// byte[] data=aa.getPic();
-		//System.out.println(aa.getQuestionid());
+		Picdata aa=(Picdata) query.uniqueResult();
+		 byte[] data=aa.getPic();
+		System.out.println(aa.getQuestionid());
 		
 		
 		

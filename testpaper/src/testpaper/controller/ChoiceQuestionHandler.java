@@ -1,5 +1,6 @@
 package testpaper.controller;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,14 +8,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.transaction.annotation.Transactional;
 
-
-import testpaper.entity.ChoiceQuestion;
-import testpaper.service.ChoiceService;;
+import testpaper.entity.Choice;
+import testpaper.entity.Picdata;
+import testpaper.service.ChoiceService;
+import testpaper.service.PicService;;
 @RequestMapping("/cq")
 @Controller
 public class ChoiceQuestionHandler {
@@ -22,11 +29,13 @@ public class ChoiceQuestionHandler {
 	
 	@Autowired
 	ChoiceService choiceservice;
+	@Autowired
+	PicService picService;
 	@RequestMapping("/getAllchoicequestion")
 	@ResponseBody	
-	public List<ChoiceQuestion> getAbilitycontent() {
+	public List<Choice> getAbilitycontent() {
 		
-		List<ChoiceQuestion> acs = choiceservice.getAllChoiceQuestion();
+		List<Choice> acs = choiceservice.getAllChoiceQuestion();
 	
 		return  acs;
 	}
@@ -35,7 +44,7 @@ public class ChoiceQuestionHandler {
 	@RequestMapping("/getAllPagechoicequestion")
 	@ResponseBody	
 	public Map<String, Object> getAllChoiceQuestionByPage(int page, int rows,
-			ChoiceQuestion oi){
+			Choice oi){
 					
 		//return choiceservice.getAllChoiceQuestionByPage(page,rows,oi);
 		
@@ -44,7 +53,7 @@ public class ChoiceQuestionHandler {
 		// 根据查询条件获取订单记录总数
 		int totalCount = choiceservice.getTotalCount(oi);
 		// 根据当前页码、每页显示记录数和查询条件获取指定页显示的订单列表
-		List<ChoiceQuestion> oiList = choiceservice.getAllChoiceQuestionByPage(page,
+		List<Choice> oiList = choiceservice.getAllChoiceQuestionByPage(page,
 				rows, oi);
 		// 向对象result中放入键值对，键为“total”,值为totalCount,
 		result.put("total", totalCount);
@@ -60,20 +69,74 @@ public class ChoiceQuestionHandler {
 
 	@RequestMapping("/savechoiceInfo")
 	@ResponseBody
-	public String addAbilitycontent(ChoiceQuestion cq){
+	@Transactional(timeout=10)
+	public String addchoicequestion(Choice cq,@RequestParam("pic") CommonsMultipartFile pic)
+	//public String addchoicequestion(@RequestParam("pic") CommonsMultipartFile pic)
+	{
 	
-			
-		//int dOK = abilityInfoService.addAbilitItem(ac);
-	//	if(dOK > 0){
-	//		return "s";
-		//}
-	//	 return "f";
-		//System.out.println(comeout);
+	System.out.println(cq.getQuestion());
+	System.out.println(cq.getId());
+	int dOK = choiceservice.addChoiceQuestion(cq);
+	////////////////////////////////////////////////////////
+	
+	System.out.println(cq.getQuestion());
+	System.out.println(cq.getId());
+	
+	
+	////////////////////////////////////////////////////////////
+	
+	if(pic!=null) {
+	 Picdata pb=new Picdata();
+	 int dOK2=0;
+	 try
+	 {
+	
+		 InputStream in =  pic.getInputStream(); 
+		byte[] b = new byte[in.available()];
+        //System.out.println("方法二的运行时间："+b.length);
+        in.read(b);
+        in.close();
+        pb.setPic(b);
+        pb.setType(1);
+        pb.setQuestionid(cq.getId());
+        dOK2 = picService.addPic(pb);
+       
+       
+	 }
+	 catch(Exception e)
+	  
+	 {   
+		 e.printStackTrace();
 		
-		//System.out.println(cq.toString());
-		System.out.println(cq.getAnswer1());
+	 }
 	
-	return "s";
+		
+	
+	
+	///////////////////////////////////////////////////////////
+	
+	if(dOK > 0 && dOK2>0)
+		return "{\"success\":\"true\",\"message\":\"ok\"}";
+	
+	else
+		return "{\"success\":\"false\",\"message\":\"fail\"}";
+	
+	}
+	
+	else 
+	{
+		if(dOK > 0 )
+			return "{\"success\":\"true\",\"message\":\"ok\"}";
+		
+		else
+			return "{\"success\":\"false\",\"message\":\"fail\"}";	
+		
+		
+	}
+	
+	
+	
+	
 	
 	}
 

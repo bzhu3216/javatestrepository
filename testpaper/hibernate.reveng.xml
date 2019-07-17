@@ -2,7 +2,5 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table-filter match-name="choice" match-catalog="testpaper"></table-filter>
-	<table-filter match-name="picdata" match-catalog="testpaper"></table-filter>
-	<table-filter match-name="chapter" match-catalog="testpaper"></table-filter>
+  <table-filter match-catalog="testpaper" match-name="choice"/>
 </hibernate-reverse-engineering>

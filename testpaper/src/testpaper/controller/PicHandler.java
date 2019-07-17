@@ -56,6 +56,12 @@ public class PicHandler {
            // pb.setId(1);
             int dOK=0;
             dOK = picService.addPic(pb);
+            
+            
+            
+            
+            
+            
          	if(dOK > 0){
     			return "s";
     		}

@@ -3,19 +3,13 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2019-7-17 15:23:24 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="testpaper.entity.Picdata" table="picdata" catalog="testpaper">
+    <class name="testpaper.entity.Chapter" table="chapter" catalog="testpaper">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <property name="pic" type="binary">
-            <column name="pic" />
-        </property>
-        <property name="type" type="java.lang.Integer">
-            <column name="type" />
-        </property>
-        <property name="questionid" type="java.lang.Integer">
-            <column name="questionid" />
+        <property name="chapterstr" type="string">
+            <column name="chapterstr" length="100" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

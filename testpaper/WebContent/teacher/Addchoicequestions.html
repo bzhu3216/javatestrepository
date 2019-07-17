@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
-	<script type="text/javascript" src="easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Add course ability</title>
+	<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+	<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
 	<div style="margin:20px 0;"></div>
 	<div class="easyui-panel" title="New Topic" style="width:100%">
 		<div style="width:100%">
-	    <form id="ff" method="post">
+	    <form id="ff" method="POST" enctype="multipart/form-data" accept="image/gif, image/jpeg,image/jpg, image/png">
 	    	<table  style="width:100%; height: 350px; ">
 	    		<tr>
 	    			<td>Question:</td>
@@ -22,35 +22,43 @@
 	    		    </tr>
 	    		<tr>
 	    			<td>Choice A:</td>
-	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer1" data-options="required:true," style="width:100%"></input></td>
+	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer1" data-options="required:true" style="width:100%"></input></td>
 	    		</tr>
 	    		<tr>
 	    			<td>Choice B:</td>
-	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer2" data-options="required:true," style="width:100%"></input></td>
+	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer2" data-options="required:true" style="width:100%"></input></td>
 	    		</tr>
 	    		<tr>
 	    			<td>Choice C:</td>
-	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer3" data-options="required:true," style="width:100%"></input></td>
+	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer3" data-options="required:true" style="width:100%"></input></td>
 	    		</tr>
 	    		<tr>
 	    			<td>Choice D:</td>
-	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer4" data-options="required:true," style="width:100%"></input></td>
+	    			<td colspan="3"><input class="easyui-textbox" type="text" name="answer4" data-options="required:true" style="width:100%"></input></td>
 	    		</tr>
 	    		<tr>
 	    			
 	    			<td style="width:10%">Outcome:</td>	    			
 	    				<td style="width:40%">
-	    				<input class="easyui-textbox" id="comeout2" name="comeout2" style="width:100%" ></input>
+	    				<input class="easyui-textbox" id="comeout2" name="comeout2" data-options="required:true" style="width:100%" ></input>
 	    				</td>
 	    				<td style="width:10%">Key:</td>
-	    			<td style="width:40%"><input class="easyui-textbox" name="key"  style="width:100%"></input>
+	    			<td style="width:40%">
+	    			<!--  input class="easyui-textbox" name="keyy"  style="width:100%"></input-->
+	    			<select class="easyui-combobox" name="keyy" style="width:100%">
+		<option value="A">A</option>
+		<option value="B">B</option>
+		<option value="C">C</option>
+		<option value="D">D</option>
+		</select>
 	    			</td>	    			    			    		     
 	    		
 	    		</tr>
 	    		<tr>
 	    			<td  style="width:10%">Picture:</td>	    			
 	    				<td style="width:40%">
-	    				<input class="easyui-numberbox" name="picid" style="width:100%"  data-options="min:1,precision:0"></input>
+	    				<!--  input class="easyui-numberbox" name="picid" style="width:100%"  data-options="min:1,precision:0"></input-->
+	    				 <input class="easyui-filebox" name="pic" data-options="buttonText:'选择文件', accept:'image/jpeg' "/>
 	    				</td>
 	    		
 	    		     <td  style="width:10%">Chapter:</td>	    			
@@ -95,7 +103,7 @@
 	">
 	<table id="dg" class="easyui-datagrid" title="Unit Learning Outcomes" style="width:1000,height:800px"
 			data-options="rownumbers:true,nowrap:false,singleSelect:true,
-			url:'ab/getAllabilityInfo',
+			url:'../ab/getAllabilityInfo',
 			method:'get'
 			">
 		<thead>
@@ -119,19 +127,21 @@
 	<script>
 	//////////////////////////////////////////////////////
 		function submitForm(){
-			//$('#ff').form('submit');
-			//alert("ok");
+			
 			$("#ff").form("submit", {
-				url:'cq/savechoiceInfo',
-				  function(data) {	
-					data=JSON.parse(data);
-					if (data == 's') {
+				url:'../cq/savechoiceInfo',
+				success:function(data){
+                	var result = eval('(' + data + ')');
+					if (result.success == 'true') {
 						$('#ff').form('clear');
-						}
+					} else {
+						alert(result.message);
+					}
 				}
 			});
 			
 		}
+	///////////////////////////////////////////////
 		function clearForm(){
 			$('#ff').form('clear');
 		}

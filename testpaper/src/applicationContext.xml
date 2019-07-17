@@ -38,6 +38,7 @@
 		<property name="mappingResources"> 
 		<list>
 		 <value>testpaper/entity/Picdata.hbm.xml</value> 
+		  <value>testpaper/entity/Choice.hbm.xml</value> 
 		</list> 
 		</property> 
 		
@@ -45,7 +46,7 @@
 		<property name="annotatedClasses">
 			<list>				
 				<value>testpaper.entity.Abilitycontent</value>
-				<value>testpaper.entity.ChoiceQuestion</value>
+				
 			    <value>testpaper.entity.Pic</value>
 			      
 			</list>
@@ -77,5 +78,24 @@
 	
 	<!-- 基于@Transactional注解方式的事务管理 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	
+	
+	
+	
+	
 
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
