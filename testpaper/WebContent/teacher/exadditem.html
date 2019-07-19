@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+	<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+
+<div>
+<h2>选择题添加</h2>
+
+<table id="dg" class="easyui-datagrid" title="Unit Learning Outcomes" style="width:100%;height:auto;fit:false"
+			data-options="rownumbers:true,
+			nowrap:false,singleSelect:true,url:'../cq/getAllPagechoicequestion',
+			queryParams : {}, //查询条件
+				pagination : true, //启用分页
+				pageSize : 10, //设置初始每页记录数（页大小）
+				pageList : [ 10, 20, 30 ], //设置可供选择的页大小
+				rownumbers : true, //显示行号
+				pageNumber:1,
+			  method:'get',toolbar:'#tb'">
+		<thead>
+			<tr>
+			   <th data-options="field:'kk',checkbox:true"></th>
+				<th data-options="field:'id' ,width:80">id</th>
+				<th  data-options="field:'question', width:1000">Question</th>
+				<th  data-options="field:'comeout', width:80">OutComeid</th>
+				<th  data-options="field:'chapter' ,width:80">Section</th>	
+				
+			</tr>
+		
+		</thead>
+	</table>
+	<div  style='text-align:center'>
+<a href="javascript:void(0)" class="easyui-linkbutton"  onclick="javascript:{}">添加选择题</a>
+</div>
+
+</div>
+<div>
+<h2>判断题添加</h2>
+
+<table id="dg" class="easyui-datagrid" title="Unit Learning Outcomes" style="width:100%;height:auto;fit:false"
+			data-options="rownumbers:true,
+			nowrap:false,singleSelect:true,url:'../cq/getAllPagechoicequestion',
+			queryParams : {}, //查询条件
+				pagination : true, //启用分页
+				pageSize : 10, //设置初始每页记录数（页大小）
+				pageList : [ 10, 20, 30 ], //设置可供选择的页大小
+				rownumbers : true, //显示行号
+				pageNumber:1,
+			  method:'get',toolbar:'#tb'">
+		<thead>
+			<tr>
+			   <th data-options="field:'kk',checkbox:true"></th>
+				<th data-options="field:'id' ,width:80">id</th>
+				<th  data-options="field:'question', width:1000">Question</th>
+				<th  data-options="field:'comeout', width:80">OutComeid</th>
+				<th  data-options="field:'chapter' ,width:80">Section</th>	
+				
+			</tr>
+		</thead>
+	</table>
+<div  style='text-align:center'>
+<a href="javascript:void(0)" class="easyui-linkbutton"  onclick="javascript:{}">添加判断题</a>
+</div>
+
+
+</div>
+
+<div>
+<h2>判断题添加</h2>
+
+<table id="dg" class="easyui-datagrid" title="Unit Learning Outcomes" style="width:100%;height:auto;fit:false"
+			data-options="rownumbers:true,
+			nowrap:false,singleSelect:true,url:'../cq/getAllPagechoicequestion',
+			queryParams : {}, //查询条件
+				pagination : true, //启用分页
+				pageSize : 10, //设置初始每页记录数（页大小）
+				pageList : [ 10, 20, 30 ], //设置可供选择的页大小
+				rownumbers : true, //显示行号
+				pageNumber:1,
+			  method:'get',toolbar:'#tb'">
+		<thead>
+			<tr>
+			   <th data-options="field:'kk',checkbox:true"></th>
+				<th data-options="field:'id' ,width:80">id</th>
+				<th  data-options="field:'question', width:1000">Question</th>
+				<th  data-options="field:'comeout', width:80">OutComeid</th>
+				<th  data-options="field:'chapter' ,width:80">Section</th>	
+				
+			</tr>
+		</thead>
+	</table>
+<div  style='text-align:center'>
+<a href="javascript:void(0)" class="easyui-linkbutton"  onclick="javascript:{}">添加判断题</a>
+</div>
+
+
+</div>
+<div>
+<h2>简答题添加</h2>
+
+<table id="dg" class="easyui-datagrid" title="Unit Learning Outcomes" style="width:100%;height:auto;fit:false"
+			data-options="rownumbers:true,
+			nowrap:false,singleSelect:true,url:'../cq/getAllPagechoicequestion',
+			queryParams : {}, //查询条件
+				pagination : true, //启用分页
+				pageSize : 10, //设置初始每页记录数（页大小）
+				pageList : [ 10, 20, 30 ], //设置可供选择的页大小
+				rownumbers : true, //显示行号
+				pageNumber:1,
+			  method:'get',toolbar:'#tb'">
+		<thead>
+			<tr>
+			   <th data-options="field:'kk',checkbox:true"></th>
+				<th data-options="field:'id' ,width:80">id</th>
+				<th  data-options="field:'question', width:1000">Question</th>
+				<th  data-options="field:'comeout', width:80">OutComeid</th>
+				<th  data-options="field:'chapter' ,width:80">Section</th>	
+				
+			</tr>
+		</thead>
+	</table>
+<div  style='text-align:center'>
+<a href="javascript:void(0)" class="easyui-linkbutton"  onclick="javascript:{}">添加简答题</a>
+</div>
+
+
+</div>
+//////////////////////////////////////////////////////添加对话框代码
+
+
+
+/////////////////////////////////////////////////////
+
+
+</body>
+</html>
