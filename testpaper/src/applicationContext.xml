@@ -39,6 +39,8 @@
 		<list>
 		 <value>testpaper/entity/Picdata.hbm.xml</value> 
 		  <value>testpaper/entity/Choice.hbm.xml</value> 
+		  <value>testpaper/entity/Chapter.hbm.xml</value> 
+		  
 		</list> 
 		</property> 
 		

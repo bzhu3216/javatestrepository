@@ -31,7 +31,7 @@ public class ChoiceQuestDAOimpl implements ChoiceQuestionDAO{
 		
 		
 		
-		String hql = "from ChoiceQuestion oi where 1=1";
+		String hql = "from Choice oi where 1=1";
 		
 		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
 		return query.setFirstResult((pageIndex - 1) * pageSize)
@@ -44,7 +44,7 @@ public class ChoiceQuestDAOimpl implements ChoiceQuestionDAO{
 	public int getTotalCount(Choice oi){
 		
 		int count = 0;
-		String hql = "select count(oi) from ChoiceQuestion oi where 1=1";		
+		String hql = "select count(oi) from Choice oi where 1=1";		
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery(hql);
 		count = ((Long) query.uniqueResult()).intValue();

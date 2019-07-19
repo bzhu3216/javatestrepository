@@ -79,8 +79,8 @@ public class ChoiceQuestionHandler {
 	int dOK = choiceservice.addChoiceQuestion(cq);
 	////////////////////////////////////////////////////////
 	
-	System.out.println(cq.getQuestion());
-	System.out.println(cq.getId());
+	//System.out.println(cq.getQuestion());
+	//System.out.println(cq.getChapter());
 	
 	
 	////////////////////////////////////////////////////////////
